@@ -26,8 +26,8 @@ public class LRUEvictionPolicy<Key> implements EvictionPolicy<Key> {
 		} else {
 			DoublyLinkedListNode<Key> node = queue.add(key);
 			this.map.put(key, node);
+		//	System.out.println("LRU : Cache block " + key + " inserted.");
 		}
-		
 	}
 
 	@Override
@@ -37,6 +37,7 @@ public class LRUEvictionPolicy<Key> implements EvictionPolicy<Key> {
 		}
 		DoublyLinkedListNode<Key>  node = this.queue.remove();
 		this.map.remove(node.getElement());
+//		System.out.println("LRU : Cache block " + node.getElement() + " removed.");
 		return node.getElement();
 	}
 
@@ -44,8 +45,14 @@ public class LRUEvictionPolicy<Key> implements EvictionPolicy<Key> {
 	public void remove(Key key) {
 		if (this.map.containsKey(key)) {
 			DoublyLinkedListNode<Key> node = this.map.get(key);
+			this.map.remove(key);
 			queue.remove(node);
 		}
+	}
+
+	@Override
+	public int size() {
+		return this.map.size();
 	}
 	
 }

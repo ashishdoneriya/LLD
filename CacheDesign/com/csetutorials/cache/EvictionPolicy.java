@@ -8,4 +8,6 @@ public interface EvictionPolicy<Key> {
 
 	void remove(Key key);
 
+	int size();
+
 }

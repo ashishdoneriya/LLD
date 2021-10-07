@@ -6,20 +6,23 @@ public class DoublyLinkedList<E> {
 
 	private DoublyLinkedListNode<E> tail;
 
+	public DoublyLinkedList() {
+		this.head = new DoublyLinkedListNode<>(null);
+		this.tail = new DoublyLinkedListNode<>(null);
+		this.head.next = this.tail;
+		this.tail.prev = this.head;
+	}
+
 	/**
 	 * Adds the element to the tail of the queue
 	 * @param element
 	 */
 	public DoublyLinkedListNode<E> add(E element) {
 		DoublyLinkedListNode<E> node = new DoublyLinkedListNode<>(element);
-		if (head == null) {
-			head = node;
-			tail = node;
-		} else {
-			tail.next = node;
-			node.prev = tail;
-			tail = node;
-		}
+		node.prev = tail.prev;
+		node.next = tail;
+		tail.prev.next = node;
+		tail.prev = node;
 		return node;
 	}
 
@@ -30,17 +33,8 @@ public class DoublyLinkedList<E> {
 	public void remove(DoublyLinkedListNode<E> node) {
 		DoublyLinkedListNode<E> prev = node.prev;
 		DoublyLinkedListNode<E> next = node.next;
-		if (prev == null && next == null) {
-			this.head = null;
-			this.tail = null;
-		} else if (prev == null) {
-			this.head = next;
-		} else if (next == null) {
-			this.tail = prev;
-		} else {
-			prev.next = next;
-			next.prev = prev;
-		}
+		prev.next = next;
+		next.prev = prev;
 	}
 
 	/**
@@ -48,17 +42,14 @@ public class DoublyLinkedList<E> {
 	 * @return
 	 */
 	public DoublyLinkedListNode<E> remove() {
-		if (this.head == null) {
+		if (this.head.next == this.tail) {
 			return null;
 		}
-		DoublyLinkedListNode<E> element = this.head;
-		this.head = this.head.next;
-		if (this.head == null) {
-			this.tail = null;
-		}
+		DoublyLinkedListNode<E> element = this.head.next;
+		this.head.next = element.next;
+		element.next.prev = this.head;
 		return element;
 	}
-
 
 	public static class DoublyLinkedListNode<E> {
 
