@@ -112,7 +112,7 @@ public class ParkinglotApplication {
 
 		// Test case 13 - park on vacated spot
 		ParkingTicket mtrTkt1 = entrancePanel.getParkingTicket(new MotorBike("ka01ee7791"));
-		System.out.println(mtrTkt.getAllocatedSpotId());
+		System.out.println(mtrTkt1.getAllocatedSpotId());
 
 		// Test case 14 - park when spot is not available
 		ParkingTicket unavaialbemTkt = entrancePanel.getParkingTicket(new MotorBike("ka01ee4455"));

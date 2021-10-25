@@ -51,7 +51,7 @@ public class Board {
 
 	public void move(Move move) {
 		Piece piece = board[move.getSrcRow()][move.getSrcColumn()];
-		if (!piece.canMove(move)) {
+		if (!piece.canMove(this, move)) {
 			throw new InvalidMoveException();
 		}
 		board[move.getSrcRow()][move.getSrcColumn()] = null;

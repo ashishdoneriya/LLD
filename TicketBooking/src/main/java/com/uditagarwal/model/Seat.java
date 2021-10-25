@@ -7,7 +7,7 @@ import lombok.Getter;
 @Getter
 public class Seat {
 
-    private final String id;
-    private final int rowNo;
-    private final int seatNo;
+	private final String id;
+	private final int rowNo;
+	private final int seatNo;
 }

@@ -11,4 +11,16 @@ public abstract class Dice {
 	
 	public abstract int roll();
 
+	public int getSize() {
+		return size;
+	}
+
+	public void setSize(int size) {
+		this.size = size;
+	}
+
+	public Dice(int size) {
+		this.setSize(size);
+	}
+
 }
