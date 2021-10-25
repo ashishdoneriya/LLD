@@ -27,7 +27,7 @@ public class ParkingLot {
 		}
 		return false;
 	}
-	
+
 	public ParkingSlot park(Vehicle vehicle) {
 		for (ParkingFloor floor : this.parkingFloors) {
 			if (floor.isAvailable(vehicle.getVehicleType())) {

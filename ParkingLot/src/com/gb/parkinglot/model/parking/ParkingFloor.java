@@ -98,5 +98,4 @@ public class ParkingFloor {
 		return usedParkingSpots;
 	}
 
-
 }

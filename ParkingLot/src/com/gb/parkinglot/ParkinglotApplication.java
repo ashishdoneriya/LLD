@@ -143,8 +143,8 @@ public class ParkinglotApplication {
 
 		// Test case 20 - vacate motorbike spot
 		mtrTkt = exitPanel.scanAndVacate(mtrTkt);
-		System.out.println(ParkingLot.INSTANCE.getParkingFloors().get(0).getFreeParkingSpots()
-				.get(ParkingSpotType.MOTORBIKE).size());
+		System.out.println(
+				ParkingLot.INSTANCE.getParkingFloors().get(0).getFreeParkingSpots().get(ParkingSpotType.MOTORBIKE).size());
 		System.out.println(mtrTkt.getCharges());
 	}
 }
